@@ -12,7 +12,15 @@
  */
 
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello FractureFell!');
-	},
-} satisfies ExportedHandler<Env>;
+  async fetch(request) {
+    const data = { message: "Hello from Fracturefell Runtime!" }
+
+    return new Response(JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',  // TODO: tighten later
+      },
+    })
+  },
+}
+
